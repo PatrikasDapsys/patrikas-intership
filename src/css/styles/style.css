@@ -13406,6 +13406,22 @@ a.read_more i {
   padding-left: 70px;
 }
 
+.author_list_info--skeleton {
+  width: 100px;
+  height: 20px;
+  display: flex !important;
+  flex-direction: column;
+}
+
+.author_list_pp--skeleton i {
+  position: relative;
+  visibility: hidden;
+}
+
+.author_list_wrap {
+  display: flex;
+}
+
 .rtl .author_list_info {
   padding-left: 0;
   padding-right: 70px;
@@ -13436,6 +13452,12 @@ a.read_more i {
 .rtl .coll_list_pp {
   left: auto;
   right: 0;
+}
+
+.author_list_pp--skeleton {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
 }
 
 .coll_list_pp img {
