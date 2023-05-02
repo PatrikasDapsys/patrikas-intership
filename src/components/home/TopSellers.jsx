@@ -30,7 +30,8 @@ const TopSellers = () => {
           </div>
           <div className="col-md-12">
             <ol className="author_list">
-              {topSellersData.map((elem) => (
+              {false
+                ? topSellersData.map((elem) => (
                     <li key={elem.id}>
                       <div className="author_list_pp">
                         <Link to={`/author/${elem.authorId}`}>
@@ -48,6 +49,29 @@ const TopSellers = () => {
                         </Link>
                         <span>{elem.price} ETH</span>
                       </div>
+                    </li>
+                  ))
+                : new Array(12).fill(0).map((_, index) => (
+                    <li key={index} >
+                      <span className="author_list_wrap" >
+                        <div
+                          className="skeleton-box author_list_pp--skeleton author_list_pp"
+                          style={{ margin: "0px 10px 0px 0px"}}
+                        >
+                          <i className="fa fa-check"></i>
+                        </div>
+                        <span>
+                          <div className="author_list_info--skeleton skeleton-box author_list_info"></div>
+                          <div
+                            className="skeleton-box"
+                            style={{
+                              width: "40px",
+                              height: "20px",
+                              margin: "10px 0px 0px 0px",
+                            }}
+                          ></div>
+                        </span>
+                      </span>
                     </li>
                   ))}
             </ol>
