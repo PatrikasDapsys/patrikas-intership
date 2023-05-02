@@ -30,7 +30,7 @@ const TopSellers = () => {
           </div>
           <div className="col-md-12">
             <ol className="author_list">
-              {false
+              {topSellersData.length
                 ? topSellersData.map((elem) => (
                     <li key={elem.id}>
                       <div className="author_list_pp">
