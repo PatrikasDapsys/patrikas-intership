@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import Countdown from "../UI/Countdown";
+import NftCard from "../UI/NftCard";
 
 const ExploreItems = () => {
   const [exploreItemsData, setExploreItemsData] = useState([]);
@@ -37,52 +38,17 @@ const ExploreItems = () => {
           className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
           style={{ display: "block", backgroundSize: "cover" }}
         >
-          <div className="nft__item">
-            <div className="author_list_pp">
-              <Link
-                to={`/author/${elem.authorId}`}
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-              >
-                <img className="lazy" src={elem.authorImage} alt="" />
-                <i className="fa fa-check"></i>
-              </Link>
-            </div>
-            <Countdown expiryDate={elem.expiryDate} />
-
-            <div className="nft__item_wrap">
-              <div className="nft__item_extra">
-                <div className="nft__item_buttons">
-                  <button>Buy Now</button>
-                  <div className="nft__item_share">
-                    <h4>Share</h4>
-                    <a href="" target="_blank" rel="noreferrer">
-                      <i className="fa fa-facebook fa-lg"></i>
-                    </a>
-                    <a href="" target="_blank" rel="noreferrer">
-                      <i className="fa fa-twitter fa-lg"></i>
-                    </a>
-                    <a href="">
-                      <i className="fa fa-envelope fa-lg"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <Link to={`/item-details/${elem.nftId}`}>
-                <img src={elem.nftImage} className="lazy nft__item_preview" alt="" />
-              </Link>
-            </div>
-            <div className="nft__item_info">
-              <Link to={`/item-details/${elem.nftId}`}>
-                <h4>{elem.title}</h4>
-              </Link>
-              <div className="nft__item_price">{elem.likes} ETH</div>
-              <div className="nft__item_like">
-                <i className="fa fa-heart"></i>
-                <span>{elem.likes}</span>
-              </div>
-            </div>
-          </div>
+          <NftCard
+            key={elem.id}
+            authorId={elem.authorId}
+            authorImage={elem.authorImage}
+            nftImage={elem.nftImage}
+            nftId={elem.nftId}
+            title={elem.title}
+            price={elem.price}
+            likes={elem.likes}
+            expiryDate={elem.expiryDate}
+          />
         </div>
       ))}
 
@@ -98,11 +64,13 @@ const ExploreItems = () => {
 export default ExploreItems;
 
 // {new Array(8).fill(0).map((_, index) => (
-// <div
-//   key={index}
-//   className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
-//   style={{ display: "block", backgroundSize: "cover" }}
-// >
+{
+  /* <div
+  key={index}
+  className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
+  style={{ display: "block", backgroundSize: "cover" }}
+> */
+}
 //   <div className="nft__item">
 //     <div className="author_list_pp">
 //       <Link
@@ -150,4 +118,59 @@ export default ExploreItems;
 //     </div>
 //   </div>
 // </div>
+// ))}
+
+// {exploreItemsData.map((elem) => (
+//   <div
+//     key={elem.id}
+//     className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
+//     style={{ display: "block", backgroundSize: "cover" }}
+//   >
+//     <div className="nft__item">
+//       <div className="author_list_pp">
+//         <Link
+//           to={`/author/${elem.authorId}`}
+//           data-bs-toggle="tooltip"
+//           data-bs-placement="top"
+//         >
+//           <img className="lazy" src={elem.authorImage} alt="" />
+//           <i className="fa fa-check"></i>
+//         </Link>
+//       </div>
+//       <Countdown expiryDate={elem.expiryDate} />
+
+//       <div className="nft__item_wrap">
+//         <div className="nft__item_extra">
+//           <div className="nft__item_buttons">
+//             <button>Buy Now</button>
+//             <div className="nft__item_share">
+//               <h4>Share</h4>
+//               <a href="" target="_blank" rel="noreferrer">
+//                 <i className="fa fa-facebook fa-lg"></i>
+//               </a>
+//               <a href="" target="_blank" rel="noreferrer">
+//                 <i className="fa fa-twitter fa-lg"></i>
+//               </a>
+//               <a href="">
+//                 <i className="fa fa-envelope fa-lg"></i>
+//               </a>
+//             </div>
+//           </div>
+//         </div>
+//         <Link to={`/item-details/${elem.nftId}`}>
+//           <img src={elem.nftImage} className="lazy nft__item_preview" alt="" />
+//         </Link>
+//       </div>
+//       <div className="nft__item_info">
+//         <Link to={`/item-details/${elem.nftId}`}>
+//           <h4>{elem.title}</h4>
+//         </Link>
+//         <div className="nft__item_price">{elem.price} ETH</div>
+//         <div className="nft__item_like">
+//           <i className="fa fa-heart"></i>
+//           <span>{elem.likes}</span>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
 // ))}
