@@ -5,7 +5,7 @@ import Countdown from "./Countdown";
 function NftCard({ id, authorId, authorImage, nftImage, nftId, title, price, likes, expiryDate }) {
   return (
     <div>
-        <div className="nft__item" style={{width: "99%"}}>
+        <div className="nft__item" style={{width: "99%"}} id={id}>
           <div className="author_list_pp">
             <Link
               to={`/author/${authorId}`}
