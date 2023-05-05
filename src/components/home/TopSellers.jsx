@@ -16,7 +16,6 @@ const TopSellers = () => {
     fetchData();
   }, []);
 
-  console.log(topSellersData);
 
   return (
     <section id="section-popular" className="pb-5">
