@@ -8,6 +8,8 @@ import axios from "axios";
 const Author = () => {
   const { authorID } = useParams();
   const [authorData, setAuthorData] = useState([]);
+  const [isFollowButtonClicked, setIsFollowButtonClicked] = useState(false);
+  const [followButtonText, setFollowButtonText] = useState("Follow");
 
   useEffect(() => {
     async function fetchData() {
@@ -19,6 +21,18 @@ const Author = () => {
 
     fetchData();
   }, []);
+
+  function clickedFollowButton() {
+    setIsFollowButtonClicked(!isFollowButtonClicked);
+    if (!isFollowButtonClicked) {
+      authorData.followers += 1;
+      setFollowButtonText("Unfollow");
+    }
+    else {
+      authorData.followers -= 1;
+      setFollowButtonText("Follow");
+    }
+  } 
 
   return (
     <div id="wrapper">
@@ -60,8 +74,8 @@ const Author = () => {
                   <div className="profile_follow de-flex">
                     <div className="de-flex-col">
                       <div className="profile_follower">{authorData.followers} followers</div>
-                      <Link to="#" className="btn-main">
-                        Follow
+                      <Link to="#" className="btn-main" onClick={clickedFollowButton}>
+                        {followButtonText}
                       </Link>
                     </div>
                   </div>
