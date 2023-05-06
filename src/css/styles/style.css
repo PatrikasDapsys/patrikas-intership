@@ -14290,6 +14290,12 @@ a.read_more i {
   display: flex;
 }
 
+.profile_avatar--skeleton {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
 .d_coll .profile_avatar {
   display: block;
   text-align: center;
