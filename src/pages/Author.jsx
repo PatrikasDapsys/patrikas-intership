@@ -22,7 +22,7 @@ const Author = () => {
     }
 
     fetchData();
-  }, [authorID]);
+  }, []);
 
   function clickedFollowButton() {
     setIsFollowButtonClicked(!isFollowButtonClicked);
@@ -35,7 +35,6 @@ const Author = () => {
     }
   }
 
-  console.log(authorData);
 
   return (
     <div id="wrapper">
@@ -136,10 +135,9 @@ const Author = () => {
                   )}
                 </div>
               </div>
-
               <div className="col-md-12">
                 <div className="de_tab tab_simple">
-                  <AuthorItems />
+                  <AuthorItems authorData={authorData}/>
                 </div>
               </div>
             </div>

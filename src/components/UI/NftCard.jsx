@@ -16,7 +16,7 @@ function NftCard({ id, authorId, authorImage, nftImage, nftId, title, price, lik
               <i className="fa fa-check"></i>
             </Link>
           </div>
-          <Countdown expiryDate={expiryDate} />
+          {!!expiryDate ? <Countdown expiryDate={expiryDate} /> : null}
 
           <div className="nft__item_wrap">
             <div className="nft__item_extra">
