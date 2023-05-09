@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import Countdown from "../UI/Countdown";
 import NftCard from "../UI/NftCard";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const NewItems = () => {
   const [newItemsData, setNewItemsData] = useState([]);
@@ -33,6 +33,7 @@ const NewItems = () => {
   };
 
   useEffect(() => {
+    AOS.init({ once: true });
     async function fetchData() {
       const { data } = await axios.get(
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems"
@@ -46,7 +47,12 @@ const NewItems = () => {
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
-        <div className="row">
+        <div
+          className="row"
+          data-aos="fade-in"
+          data-aos-duration="1000"
+          data-aos-delay="150"
+        >
           <div className="col-lg-12">
             <div className="text-center">
               <h2>New Items</h2>
