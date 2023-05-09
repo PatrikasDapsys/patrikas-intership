@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const TopSellers = () => {
   const [topSellersData, setTopSellersData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
+      AOS.init({ once: true });
       const { data } = await axios.get(
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers"
       );
@@ -15,7 +18,6 @@ const TopSellers = () => {
 
     fetchData();
   }, []);
-
 
   return (
     <section id="section-popular" className="pb-5">
@@ -27,7 +29,12 @@ const TopSellers = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <div className="col-md-12">
+          <div
+            className="col-md-12"
+            data-aos="fade-in"
+            data-aos-duration="1000"
+            data-aos-delay="150"
+          >
             <ol className="author_list">
               {topSellersData.length
                 ? topSellersData.map((elem) => (
@@ -51,11 +58,11 @@ const TopSellers = () => {
                     </li>
                   ))
                 : new Array(12).fill(0).map((_, index) => (
-                    <li key={index} >
-                      <span className="author_list_wrap" >
+                    <li key={index}>
+                      <span className="author_list_wrap">
                         <div
                           className="skeleton-box author_list_pp--skeleton author_list_pp"
-                          style={{ margin: "0px 10px 0px 0px"}}
+                          style={{ margin: "0px 10px 0px 0px" }}
                         >
                           <i className="fa fa-check"></i>
                         </div>
