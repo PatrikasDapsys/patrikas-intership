@@ -9,6 +9,7 @@ const Landing = () => {
   useEffect(() => {
     AOS.init({
       duration: 750,
+      once: true,
     });
   }, []);
 
