@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import NftCard from "../UI/NftCard";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ExploreItems = () => {
   const [exploreItemsData, setExploreItemsData] = useState([]);
@@ -12,6 +14,7 @@ const ExploreItems = () => {
   const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
+    AOS.init({ once: true });
     async function fetchData() {
       if (selectedOption) {
         setIsLoading(false);
@@ -99,7 +102,11 @@ const ExploreItems = () => {
             </div>
           ))}
       {showLoadMoreButton ? (
-        <div className="col-md-12 text-center">
+        <div
+          className="col-md-12 text-center"
+          data-aos="fade-up"
+          data-aos-delay="500"
+        >
           <Link
             to=""
             id="loadmore"
